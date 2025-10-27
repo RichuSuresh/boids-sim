@@ -5,11 +5,11 @@ const innerWidth = window.innerWidth;
 const innerHeight = window.innerHeight;
 canvas.width = innerWidth;
 canvas.height = innerHeight;
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d", { alpha: false });
 const off = document.createElement("canvas");
 off.width = innerWidth;
 off.height = innerHeight;
-const offCtx = off.getContext("2d");
+const offCtx = off.getContext("2d", { alpha: false });
 const numBoids = 100;
 const boids = [];
 for (let i = 0; i < numBoids; i++) {
@@ -22,8 +22,7 @@ function animate() {
         boid.move();
     });
     
-    ctx.fillStyle = `rgba(0,0,0,1)`;
-    ctx.fillRect(0, 0, innerWidth, innerHeight);
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
     ctx.drawImage(off, 0, 0);
     requestAnimationFrame(animate);
 }
