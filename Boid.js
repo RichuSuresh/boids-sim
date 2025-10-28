@@ -6,18 +6,18 @@ class Boid {
         this.vy = dy;
         this.ctx = ctx;
         this.trail = [];
-        this.maxTrail = 50;
-        this.maxSpeed = 1;
-        this.minSpeed = 1;
+        this.maxTrail = 40;
+        this.maxSpeed = 3;
+        this.minSpeed = 2;
     }
 
     draw() {
-        for (let i = 0; i < this.trail.length - 1; i=i+3) {
+        for (let i = 0; i < this.trail.length - 1; i=i+5) {
             const x = this.trail[i].x;
             const y = this.trail[i].y;
             this.ctx.beginPath();
             this.ctx.arc(x, y, 7, 0, 2 * Math.PI, false);
-            this.ctx.fillStyle = `rgba(255, 255, 255, ${0.1 * (i / this.maxTrail)})`;
+            this.ctx.fillStyle = `rgba(255, 255, 255, ${0.3 * (i / this.maxTrail)})`;
             this.ctx.fill();
         }
         this.ctx.save();
@@ -54,24 +54,13 @@ class Boid {
             this.vy = (this.vy/speed)*this.maxSpeed
         }
         
+        if(this.x >= window.innerWidth || this.x <= 0 || this.y >= window.innerHeight || this.y <= 0){
+            this.vx = -this.vx;
+            this.vy = -this.vy;
+        }
+
         this.x += this.vx;
         this.y += this.vy;
-
-        // if(this.x > window.innerWidth){
-        //     this.x = 0;
-        // }
-
-        // if(this.x < 0){
-        //     this.x = window.innerWidth;
-        // }
-
-        // if(this.y > window.innerHeight){
-        //     this.y = 0;
-        // }
-
-        // if(this.y < 0){
-        //     this.y = window.innerHeight;
-        // }
 
         this.draw();
     }

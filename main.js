@@ -11,7 +11,7 @@ const off = document.createElement("canvas");
 off.width = innerWidth;
 off.height = innerHeight;
 const offCtx = off.getContext("2d", { alpha: false });
-const numBoids = 200;
+const numBoids = 300;
 const boids = [];
 for (let i = 0; i < numBoids; i++) {
     boids.push(new Boid(Math.random() * innerWidth, Math.random() * innerHeight, Math.random() - 0.5, Math.random() - 0.5, offCtx));
