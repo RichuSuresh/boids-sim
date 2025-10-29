@@ -1,18 +1,22 @@
 {
   "name": "boids-sim",
+  "homepage": "https://RichuSuresh.github.io/boids-sim/",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^7.1.12"
   }
 }
